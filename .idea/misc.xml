@@ -10,6 +10,7 @@
         <option value="$PROJECT_DIR$/approvalSystem/Permission/pom.xml" />
         <option value="$PROJECT_DIR$/approvalSystem/groupservice/groupservice/pom.xml" />
         <option value="$PROJECT_DIR$/approvalSystem/Organization/pom.xml" />
+        <option value="$PROJECT_DIR$/approvalSystem/Auth/Auth/pom.xml" />
       </list>
     </option>
   </component>

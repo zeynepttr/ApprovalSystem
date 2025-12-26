@@ -35,14 +35,54 @@
             <artifactId>spring-cloud-starter-gateway</artifactId>
             <version>4.2.0</version>
         </dependency>
+      <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-starter-gateway</artifactId>
+      </dependency>
 
 
-        <!-- Spring Boot Starter Test (Test işlemleri için) -->
+      <!-- Spring Boot Starter Test (Test işlemleri için) -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+
+
+      <!-- Observability -->
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-actuator</artifactId>
+      </dependency>
+
+      <dependency>
+        <groupId>io.micrometer</groupId>
+        <artifactId>micrometer-registry-prometheus</artifactId>
+      </dependency>
+
+      <!-- Spring Cloud Gateway zaten WebFlux kullanır -->
+      <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-starter-gateway</artifactId>
+      </dependency>
+
+      <!-- ✅ SECURITY (BU ŞART) -->
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-security</artifactId>
+      </dependency>
+
+      <!-- ✅ ACTUATOR -->
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-actuator</artifactId>
+      </dependency>
+      <dependency>
+        <groupId>org.projectlombok</groupId>
+        <artifactId>lombok</artifactId>
+        <scope>provided</scope>
+      </dependency>
+
 
     </dependencies>
 
