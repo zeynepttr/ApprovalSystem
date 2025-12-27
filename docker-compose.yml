@@ -18,7 +18,7 @@ services:
 
   # --- GATEWAY ---
   gateway:
-    build: ./Gateway
+    build: ./approvalSystem/Gateway
     container_name: gateway
     ports:
       - "8080:8080"
@@ -33,7 +33,7 @@ services:
 
   # --- USER SERVICE ---
   userservice:
-    build: ./User
+    build: ./approvalSystem/User
     container_name: userservice
     networks:
       - microservice-net
@@ -47,7 +47,7 @@ services:
 
   # --- ROLE SERVICE ---
   roleservice:
-    build: ./Role
+    build: ./approvalSystem/Role
     container_name: roleservice
     networks:
       - microservice-net
@@ -61,7 +61,7 @@ services:
 
   # --- PERMISSION SERVICE ---
   permissionservice:
-    build: ./Permission
+    build: ./approvalSystem/Permission
     container_name: permissionservice
     networks:
       - microservice-net
@@ -75,7 +75,7 @@ services:
 
   # --- GROUP SERVICE ---
   groupservice:
-    build: ./GroupService
+    build: ./approvalSystem/groupService
     container_name: groupservice
     networks:
       - microservice-net
@@ -89,7 +89,7 @@ services:
 
   # --- ORGANIZATION SERVICE ---
   organizationservice:
-    build: ./Organization
+    build: ./approvalSystem/Organization
     container_name: organizationservice
     networks:
       - microservice-net
