@@ -75,7 +75,7 @@ services:
 
   # --- GROUP SERVICE ---
   groupservice:
-    build: ./approvalSystem/groupService
+    build: ./approvalSystem/groupservice/groupservice
     container_name: groupservice
     networks:
       - microservice-net
