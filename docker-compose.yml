@@ -1,0 +1,109 @@
+version: '3.8'
+
+services:
+  # --- POSTGRESQL DATABASE ---
+  postgres-db:
+    image: postgres:15
+    container_name: postgres-db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=123456
+      - POSTGRES_DB=approvaldb
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - microservice-net
+
+  # --- GATEWAY ---
+  gateway:
+    build: ./Gateway
+    container_name: gateway
+    ports:
+      - "8080:8080"
+    networks:
+      - microservice-net
+    depends_on:
+      - userservice
+      - roleservice
+      - permissionservice
+      - groupservice
+      - organizationservice
+
+  # --- USER SERVICE ---
+  userservice:
+    build: ./User
+    container_name: userservice
+    networks:
+      - microservice-net
+    depends_on:
+      - postgres-db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres-db:5432/approvaldb
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=123456
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+
+  # --- ROLE SERVICE ---
+  roleservice:
+    build: ./Role
+    container_name: roleservice
+    networks:
+      - microservice-net
+    depends_on:
+      - postgres-db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres-db:5432/approvaldb
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=123456
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+
+  # --- PERMISSION SERVICE ---
+  permissionservice:
+    build: ./Permission
+    container_name: permissionservice
+    networks:
+      - microservice-net
+    depends_on:
+      - postgres-db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres-db:5432/approvaldb
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=123456
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+
+  # --- GROUP SERVICE ---
+  groupservice:
+    build: ./GroupService
+    container_name: groupservice
+    networks:
+      - microservice-net
+    depends_on:
+      - postgres-db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres-db:5432/approvaldb
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=123456
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+
+  # --- ORGANIZATION SERVICE ---
+  organizationservice:
+    build: ./Organization
+    container_name: organizationservice
+    networks:
+      - microservice-net
+    depends_on:
+      - postgres-db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres-db:5432/approvaldb
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=123456
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+
+networks:
+  microservice-net:
+    driver: bridge
+
+volumes:
+  pgdata:
