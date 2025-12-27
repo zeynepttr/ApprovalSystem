@@ -1,3 +1,3 @@
-FROM openjdk:17-jdk-slim
-COPY target/permission-0.0.1-SNAPSHOT.jar app.jar
+FROM eclipse-temurin:17-jdk-jammy
+COPY target/Permission-0.0.1-SNAPSHOT.jar app.jar
 ENTRYPOINT ["java","-jar","/app.jar"]
