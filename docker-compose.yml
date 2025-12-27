@@ -47,7 +47,7 @@ services:
 
   # --- ROLE SERVICE ---
   roleservice:
-    build: ./approvalSystem/Role/Role
+    build: ./approvalSystem/Role
     container_name: roleservice
     networks:
       - microservice-net
