@@ -5,34 +5,31 @@ scrape_configs:
   - job_name: 'gateway'
     metrics_path: '/actuator/prometheus'
     static_configs:
-      - targets: ['host.docker.internal:8080']
+      - targets: ['gateway:8080'] # host.docker.internal yerine servis adı
 
   - job_name: 'user'
     metrics_path: '/actuator/prometheus'
     static_configs:
-      - targets: [ 'host.docker.internal:8081' ]
+      - targets: ['userservice:8081'] # docker-compose'daki container_name
 
   - job_name: 'role'
     metrics_path: '/actuator/prometheus'
     static_configs:
-      - targets: [ 'host.docker.internal:8082' ]
+      - targets: ['roleservice:8082']
 
   - job_name: 'permission'
     metrics_path: '/actuator/prometheus'
     static_configs:
-      - targets: [ 'host.docker.internal:8083' ]
+      - targets: ['permissionservice:8083']
 
   - job_name: 'group'
     metrics_path: '/actuator/prometheus'
     static_configs:
-      - targets: ['host.docker.internal:8084']
+      - targets: ['groupservice:8084']
 
   - job_name: 'organization'
     metrics_path: '/actuator/prometheus'
     static_configs:
-      - targets: [ 'host.docker.internal:8085' ]
-
-
-
+      - targets: ['organizationservice:8085']
 
 
