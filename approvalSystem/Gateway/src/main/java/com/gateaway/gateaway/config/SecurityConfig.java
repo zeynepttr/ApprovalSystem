@@ -20,6 +20,9 @@ public class SecurityConfig {
           "/users/**",
           "/roles/**",
           "/groups/**",
+          "/permissions/**",
+          "/organizations/**",
+
           "/auths/**"
         ).permitAll()
         .anyExchange().authenticated()
