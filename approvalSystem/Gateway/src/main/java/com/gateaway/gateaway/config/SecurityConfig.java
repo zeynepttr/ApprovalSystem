@@ -22,7 +22,6 @@ public class SecurityConfig {
           "/groups/**",
           "/permissions/**",
           "/organizations/**",
-
           "/auths/**"
         ).permitAll()
         .anyExchange().authenticated()
