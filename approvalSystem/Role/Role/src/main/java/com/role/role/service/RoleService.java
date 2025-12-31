@@ -27,7 +27,7 @@ public class RoleService {
 
     // Permission mikroservisine erişim için bu metodu ekleyeceğiz
     private boolean isPermissionValid(Long permissionId) {
-        String permissionServiceUrl = "http://localhost:8083/permissions/" + permissionId;
+        String permissionServiceUrl = "http://gateway:8080/permissions/" + permissionId;
 
         // WebClient kullanarak permission mikroservisine GET isteği atıyoruz
         ResponseEntity<String> response = webClientBuilder.baseUrl(permissionServiceUrl)
