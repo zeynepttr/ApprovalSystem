@@ -2,84 +2,42 @@ package com.organization.organization.model;
 
 import jakarta.persistence.*;
 
-import java.util.Objects;
-
 @Entity
+@Table(name = "organization")
 public class Organization {
 
-    @Id
-    private Long id;
-    private String name;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
 
-    @ManyToOne
-    private Organization parent;
+  private String name;
 
+  @Column(name = "parent_id")
+  private Long parentId;
 
+  // --- GETTERS & SETTERS ---
 
-    // Default constructor
-    public Organization() {
-    }
+  public Long getId() {
+    return id;
+  }
 
-    // Parameterized constructor
-    public Organization(Long id, String name, Organization parent) {
-        this.id = id;
-        this.name = name;
-        this.parent = parent;
+  public String getName() {
+    return name;
+  }
 
-    }
+  public Long getParentId() {
+    return parentId;
+  }
 
-    // Getters and Setters
+  public void setId(Long id) {
+    this.id = id;
+  }
 
-    public Long getId() {
-        return id;
-    }
+  public void setName(String name) {
+    this.name = name;
+  }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Organization getParent() {
-        return parent;
-    }
-
-    public void setParent(Organization parent) {
-        this.parent = parent;
-    }
-
-
-
-    // equals and hashCode
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Organization that = (Organization) o;
-        return Objects.equals(id, that.id) && Objects.equals(name, that.name);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, name);
-    }
-
-    // toString method
-
-    @Override
-    public String toString() {
-        return "Organization{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", parent=" + (parent != null ? parent.getName() : "null") +
-
-                '}';
-    }
+  public void setParentId(Long parentId) {
+    this.parentId = parentId;
+  }
 }
