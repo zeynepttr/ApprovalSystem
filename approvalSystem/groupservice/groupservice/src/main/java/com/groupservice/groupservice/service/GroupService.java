@@ -41,7 +41,7 @@ public class GroupService {
     }
 
     private boolean isOrganizationValid(Long organizationsId) {
-        String organizationServiceUrl = "http://localhost:8085/organizations/" + organizationsId;
+        String organizationServiceUrl = "http://permissionservice:8083/permissions/" + organizationsId;
 
         // WebClient kullanarak group mikroservisine GET isteği atıyoruz
         ResponseEntity<String> response = webClientBuilder.baseUrl(organizationServiceUrl)
