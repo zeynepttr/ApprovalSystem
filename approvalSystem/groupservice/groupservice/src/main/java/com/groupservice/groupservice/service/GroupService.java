@@ -26,7 +26,7 @@ public class GroupService {
 
     // Permission mikroservisine erişim için bu metodu ekleyeceğiz
     private boolean isPermissionValid(Long permissionId) {
-        String permissionServiceUrl = "http://localhost:8083/permissions/" + permissionId;
+        String permissionServiceUrl = "http://gateway:8080/permissions/" + permissionId;
 
         // WebClient kullanarak permission mikroservisine GET isteği atıyoruz
         ResponseEntity<String> response = webClientBuilder.baseUrl(permissionServiceUrl)
@@ -41,7 +41,7 @@ public class GroupService {
     }
 
     private boolean isOrganizationValid(Long organizationsId) {
-        String organizationServiceUrl = "http://permissionservice:8083/permissions/" + organizationsId;
+        String organizationServiceUrl = "http://gateway:8080/organizations/" + organizationsId;
 
         // WebClient kullanarak group mikroservisine GET isteği atıyoruz
         ResponseEntity<String> response = webClientBuilder.baseUrl(organizationServiceUrl)
